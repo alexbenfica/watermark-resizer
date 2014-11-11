@@ -1,0 +1,38 @@
+<project 
+	name="WaterMarkResizer" 
+	default="default" 
+	basedir=".">
+	
+    <description>
+    	Put watermark on images, in many different positions!
+    </description>
+	
+	<property name="devel" location="."/>	
+	<property name="producao" location="/media/sf_D_DRIVE/Dropbox/Producao/WaterMarkResizer/"/>
+
+	
+	
+    <target 
+    	name="default" 
+    	depends="clean, clone" 
+    	description="Envia para o diretorio definitivo">
+    	<!-- Create the time stamp -->
+    	<tstamp/>    	
+    </target>
+	
+	
+	
+    <target name="clean">    	
+    	<delete dir="${producao}" failonerror="false" />    	
+    	<mkdir dir="${producao}"/>
+    </target>
+	
+
+    <target name="clone">
+        <exec executable="python" dir="." failonerror="true">
+              <arg value="-B"/>
+                  <arg value="build/build.py"/>
+        </exec>		
+    </target>
+
+</project>
